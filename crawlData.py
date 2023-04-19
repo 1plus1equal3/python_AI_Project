@@ -11,7 +11,7 @@ def get_article(link: str):
     # print(content.text)
     soup = BeautifulSoup(content.content, 'html.parser')
     # get article content (<p> tag)
-    found_content = soup.find_all("div", class_="detail__content", )
+    found_content = soup.find_all("div", class_="detail__content")
     # print(soup.get_text())
     return str(found_content)
 
