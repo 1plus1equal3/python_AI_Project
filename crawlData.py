@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from pyvi import ViTokenizer
 
 article_content = []
 
@@ -33,6 +34,14 @@ def get_article(link: str):
     # print(soup.get_text())
     return str(found_content)
 
+def split_word(article: list):
+    article_text=str(article)
+    words=ViTokenizer.tokenize(article_text)
+    #link the word that containing 2-3 words by '_', return a string
+    list_words=words.split()
+    #split the string into meaning word in Vietnamese
+    return list_words
+
 
 if __name__ == '__main__':
     check = True
@@ -52,11 +61,8 @@ if __name__ == '__main__':
             article_content.append(get_article(links[i]))
             cleaned_content_of_each_article.append(clean_content(article_content[i]))
 
-        # print(article_content[i])
-        print(article_content[1])
-        print(cleaned_content_of_each_article[1][0])
-        print(len(cleaned_content_of_each_article[1]))
-        print(len(cleaned_content_of_each_article))
+        print(split_word(cleaned_content_of_each_article[1]))
+        #Test
         print('Continue?')
         check = input()
         if check == 'n':
