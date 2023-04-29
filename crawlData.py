@@ -7,24 +7,6 @@ article_content = []
 cleaned_content_of_each_article = []
 
 
-def clean_content(content: str):
-    cleaned_content = []
-    """badWord = ["<div class=\"detail__content\">", "<p>", "</p>",
-               "<div class=\"serviceBox09 imf-boxes\" id=\"box1681772110211\">",
-               "<div class=\"box-settings\"><span class=\"fal fa-cog boxes-settings\">",
-               "</span>", "</div>", "<style>", "</style>"]"""
-    a = 0
-    while True:
-        x = content.find("<p>", a)
-        y = content.find("</p>", x)
-        if x < 0:
-            break
-        else:
-            cleaned_content.append(content[x + 3:y])
-            a = y+1
-    return cleaned_content
-
-
 def get_article(link: str):
     content = requests.get(link)
     # print(content.text)
@@ -34,8 +16,25 @@ def get_article(link: str):
     # print(soup.get_text())
     return str(found_content)
 
-def split_word(article: list):
-    article_text=str(article)
+
+def clean_content(article: str):
+    str_list=list(article)
+    i=0
+    while i != len(str_list):
+        if str_list[i] == '<':
+            while str_list[i] != '>':
+                str_list[i] = ''
+                i=i+1
+            if str_list[i] == '>':
+                str_list[i] =''
+        i=i+1
+    res=''.join(str_list)
+    bad_word=['.',',','(',')','...','"']
+    for i in bad_word:
+        res=res.replace(i,'')
+    return res
+
+def split_word(article_text: str):
     words=ViTokenizer.tokenize(article_text)
     #link the word that containing 2-3 words by '_', return a string
     list_words=words.split()
@@ -61,6 +60,8 @@ if __name__ == '__main__':
             article_content.append(get_article(links[i]))
             cleaned_content_of_each_article.append(clean_content(article_content[i]))
 
+        #print(type(article_content[1]))#article content =>string
+        
         print(split_word(cleaned_content_of_each_article[1]))
         #Test
         print('Continue?')
