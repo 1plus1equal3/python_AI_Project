@@ -131,6 +131,7 @@ if __name__ == '__main__':
     positiveLinks.append("https://vneconomy.vn/bat-dau-giai-ngan-goi-120-000-ty-dong-cho-vay-nha-o-xa-hoi-nha-o-cong-nhan-cai-tao-chung-cu.htm")
     positiveLinks.append("https://vneconomy.vn/bamboo-airways-tiep-tuc-giu-ngoi-vuong-dung-gio-top-3-hang-bay-noi-dia-lon-nhat-thang-6-2022.htm")
     positiveLinks.append("https://vneconomy.vn/bamboo-capital-bcg-lai-quy-1-dat-522-ty-tang-truong-221-so-voi-cung-ky.htm")
+    positiveLinks.append("https://vneconomy.vn/phat-trien-8-trung-tam-dau-moi-ve-nong-nghiep-o-dong-bang-song-cuu-long.htm")
 
     negativeLinks.append("https://vneconomy.vn/vng-lo-gan-27-ty-ngay-trong-quy-dau-tien-nam-2021.htm")
     negativeLinks.append("https://vneconomy.vn/quy-2-2019-cong-ty-me-vng-lo-rong-102-ty-dong.htm")
