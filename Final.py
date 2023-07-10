@@ -87,9 +87,9 @@ def analysis_an_article(link: str):
     for item in prob_words:
         i = i + 1
         vector[i] = count_fre_in_article(word_in_article, item)
-    positive_point = 55 / 123
-    negative_point = 36 / 123
-    neutral_point = 32 / 123
+    positive_point = 56 / 124
+    negative_point = 36 / 124
+    neutral_point = 32 / 124
     prob_pos = read_csv_file('prob_pos_word.csv')
     prob_neg = read_csv_file('prob_neg_word.csv')
     prob_neu = read_csv_file('prob_neu_word.csv')
